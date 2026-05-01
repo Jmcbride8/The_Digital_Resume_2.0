@@ -6,8 +6,8 @@ const experiences = [
     company: "KIOXIA (formerly Toshiba)",
     subtitle: "San Jose, CA · $5B IPO Dec 2024",
     period: "2015 – 2024",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Kioxia_logo.svg/320px-Kioxia_logo.svg.png",
-    logoFallback: "K",
+    logo: "https://logo.clearbit.com/kioxia.com",
+    logoFallback: "KIOXIA",
     roles: [
       {
         title: "Director, Digital Transformation",
@@ -40,8 +40,8 @@ const experiences = [
     company: "Western Digital",
     subtitle: "San Jose, CA",
     period: "2012 – 2015",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Western_Digital_logo_%282025%29.svg/320px-Western_Digital_logo_%282025%29.svg.png",
-    logoFallback: "WD",
+    logo: "https://logo.clearbit.com/westerndigital.com",
+    logoFallback: "Western Digital",
     roles: [
       {
         title: "Marketing & Strategy Consultant",
@@ -76,22 +76,19 @@ const skills = [
   { category: "Technical", items: ["SQL", "Python / Flask", "Azure / SQL Server", "Data Warehousing", "SAP BI/BO"] },
 ];
 
-function CompanyLogo({ logo, fallback }) {
+function CompanyLogo({ logo, fallback, textColor = "#666" }) {
   return (
-    <div className="flex items-center justify-center bg-white border border-neutral-100 overflow-hidden shrink-0 px-4 py-2" style={{ height: 48, minWidth: 120, maxWidth: 160 }}>
+    <div className="flex items-center justify-center bg-white border border-neutral-100 shrink-0 px-4 py-2" style={{ height: 52, minWidth: 130 }}>
       <img
         src={logo}
         alt={fallback}
-        className="object-contain max-h-8 w-auto"
+        className="object-contain max-h-9 w-auto"
         onError={(e) => {
           e.target.style.display = "none";
-          e.target.nextSibling.style.display = "flex";
+          e.target.nextSibling.style.removeProperty("display");
         }}
       />
-      <span
-        className="items-center justify-center text-sm font-bold text-neutral-400 w-full h-full"
-        style={{ display: "none" }}
-      >
+      <span className="text-sm font-bold tracking-wide" style={{ display: "none", color: textColor, fontFamily: "'Oswald', sans-serif" }}>
         {fallback}
       </span>
     </div>
