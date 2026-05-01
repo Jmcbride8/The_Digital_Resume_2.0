@@ -11,6 +11,7 @@ import StatusTickerBar from "../components/StatusTickerBar";
 import { SoundProvider } from "../components/SoundManager";
 import MissionBriefing from "../components/MissionBriefing";
 import AnalystView from "./AnalystView";
+import ExecutiveView from "./ExecutiveView";
 
 export default function Home() {
   const [mode, setMode] = useState(null); // null | "operative" | "analyst"
@@ -31,12 +32,11 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {mode === "operative" && (
+      {mode === "operator" && (
         <>
           <StatusTickerBar />
           <div className="min-h-screen bg-background text-foreground font-sans pt-7">
-            {/* Switch protocol button */}
-            <div className="fixed bottom-16 left-4 z-50">
+            <div className="fixed bottom-4 left-4 z-50">
               <button
                 onClick={handleSwitch}
                 className="font-mono text-xs px-3 py-1.5 border border-primary/20 text-primary/40 hover:text-primary hover:border-primary/60 transition-all tracking-widest bg-background"
@@ -57,6 +57,10 @@ export default function Home() {
 
       {mode === "analyst" && (
         <AnalystView key="analyst" onSwitch={handleSwitch} />
+      )}
+
+      {mode === "executive" && (
+        <ExecutiveView key="executive" onSwitch={handleSwitch} />
       )}
     </SoundProvider>
   );
