@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import ScrambleText from "@/components/ScrambleText";
 
 const stats = [
   { value: "$200M→$3B", label: "Revenue Growth", code: "STAT-01" },
@@ -31,15 +32,18 @@ export default function ImpactStats() {
               transition={{ delay: i * 0.1 }}
               className="text-center relative p-4 border border-primary/20 bg-background/50"
             >
+
               {/* Corner accents */}
               <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/60" />
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/60" />
 
               <div className="font-mono text-xs text-muted-foreground tracking-widest mb-2">{stat.code}</div>
               <div className="text-2xl md:text-3xl font-display font-bold text-primary mb-1" style={{ fontFamily: "'Oswald', sans-serif", textShadow: "0 0 20px hsl(82,55%,42%,0.4)" }}>
-                {stat.value}
+                <ScrambleText text={stat.value} delay={i * 120} />
               </div>
-              <div className="text-xs text-muted-foreground uppercase tracking-widest font-mono">{stat.label}</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-widest font-mono">
+                <ScrambleText text={stat.label} delay={i * 120 + 100} />
+              </div>
             </motion.div>
           ))}
         </div>

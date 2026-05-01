@@ -1,4 +1,5 @@
 import { Mail, Linkedin, Radio } from "lucide-react";
+import ScrambleText from "@/components/ScrambleText";
 
 export default function FooterSection() {
   return (
@@ -20,7 +21,7 @@ export default function FooterSection() {
         </div>
 
         <h2 className="text-3xl md:text-4xl font-display font-bold uppercase tracking-widest mb-3" style={{ fontFamily: "'Oswald', sans-serif" }}>
-          Ready to Deploy
+          <ScrambleText text="Ready to Deploy" />
         </h2>
         <p className="text-muted-foreground mb-8 max-w-md mx-auto font-sans">
           Looking to drive digital transformation in your organization?<br />

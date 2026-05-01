@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import ScrambleText from "@/components/ScrambleText";
 
 const skillGroups = [
   {
@@ -65,7 +66,7 @@ export default function SkillsSection() {
         >
           <p className="font-mono text-xs text-primary/60 tracking-[0.4em] uppercase mb-3">◆ CAPABILITY BRIEF // UNCLASSIFIED</p>
           <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-widest" style={{ fontFamily: "'Oswald', sans-serif" }}>
-            Tactical Skillset
+            <ScrambleText text="Tactical Skillset" />
           </h2>
           <div className="h-px w-24 bg-primary mt-3" />
         </motion.div>
@@ -82,7 +83,7 @@ export default function SkillsSection() {
               <div className="flex items-center gap-4 mb-5">
                 <span className="font-mono text-xs text-muted-foreground border border-border px-2 py-0.5">{group.code}</span>
                 <h3 className="font-display font-bold uppercase tracking-widest text-sm text-foreground/80" style={{ fontFamily: "'Oswald', sans-serif" }}>
-                  {group.label}
+                  <ScrambleText text={group.label} delay={i * 100} />
                 </h3>
                 <div className="flex-1 h-px bg-border" />
               </div>

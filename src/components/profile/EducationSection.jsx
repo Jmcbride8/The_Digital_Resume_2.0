@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Award, Star } from "lucide-react";
+import ScrambleText from "@/components/ScrambleText";
 
 const education = [
   { school: "UCLA Anderson School of Management", degree: "M.B.A.", location: "Los Angeles, CA", code: "ACAD-01" },
@@ -29,7 +30,7 @@ export default function EducationSection() {
         >
           <p className="font-mono text-xs text-primary/60 tracking-[0.4em] uppercase mb-3">◆ TRAINING & QUALIFICATION RECORD</p>
           <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-widest" style={{ fontFamily: "'Oswald', sans-serif" }}>
-            Credentials
+            <ScrambleText text="Credentials" />
           </h2>
           <div className="h-px w-24 bg-primary mt-3" />
         </motion.div>
@@ -40,7 +41,7 @@ export default function EducationSection() {
             <div className="flex items-center gap-3 mb-6">
               <GraduationCap className="w-5 h-5 text-primary" />
               <h3 className="font-display font-bold uppercase tracking-widest text-lg" style={{ fontFamily: "'Oswald', sans-serif" }}>
-                Education
+                <ScrambleText text="Education" />
               </h3>
             </div>
             <div className="space-y-4">
@@ -69,7 +70,7 @@ export default function EducationSection() {
             <div className="flex items-center gap-3 mb-6">
               <Award className="w-5 h-5 text-accent" />
               <h3 className="font-display font-bold uppercase tracking-widest text-lg" style={{ fontFamily: "'Oswald', sans-serif" }}>
-                Certifications
+                <ScrambleText text="Certifications" />
               </h3>
             </div>
             <div className="space-y-4">

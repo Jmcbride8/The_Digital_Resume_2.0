@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink, BarChart3, Users, Briefcase, Target, Rocket, Lightbulb, Lock } from "lucide-react";
+import ScrambleText from "@/components/ScrambleText";
 
 const apps = [
   {
@@ -85,7 +86,7 @@ export default function AppsPortfolio() {
         >
           <p className="font-mono text-xs text-primary/60 tracking-[0.4em] uppercase mb-3">◆ DEPLOYED ASSETS // BASE44 DIVISION</p>
           <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-widest" style={{ fontFamily: "'Oswald', sans-serif" }}>
-            Active Operations
+            <ScrambleText text="Active Operations" />
           </h2>
           <div className="h-px w-24 bg-primary mt-3 mb-4" />
           <p className="text-muted-foreground max-w-2xl font-sans tracking-wide">
@@ -135,7 +136,7 @@ export default function AppsPortfolio() {
 
                   {/* Name */}
                   <h3 className="font-display font-bold text-lg uppercase tracking-wide mb-2 group-hover:text-primary transition-colors" style={{ fontFamily: "'Oswald', sans-serif" }}>
-                    {app.name}
+                    <ScrambleText text={app.name} delay={i * 80} />
                   </h3>
 
                   {/* Description */}

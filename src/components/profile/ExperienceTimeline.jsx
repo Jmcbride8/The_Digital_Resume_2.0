@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Shield, Crosshair, Database, BarChart3, Layers, Cog, ChevronRight } from "lucide-react";
+import ScrambleText from "@/components/ScrambleText";
 
 const experiences = [
   {
@@ -79,7 +80,7 @@ export default function ExperienceTimeline() {
         >
           <p className="font-mono text-xs text-primary/60 tracking-[0.4em] uppercase mb-3">◆ PERSONNEL FILE // DECLASSIFIED</p>
           <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-widest" style={{ fontFamily: "'Oswald', sans-serif" }}>
-            Deployment Record
+            <ScrambleText text="Deployment Record" />
           </h2>
           <div className="h-px w-24 bg-primary mt-3" />
         </motion.div>
@@ -99,7 +100,7 @@ export default function ExperienceTimeline() {
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary" />
                 <Crosshair className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <h3 className="font-display text-xl font-bold uppercase tracking-widest" style={{ fontFamily: "'Oswald', sans-serif" }}>{exp.company}</h3>
+                  <h3 className="font-display text-xl font-bold uppercase tracking-widest" style={{ fontFamily: "'Oswald', sans-serif" }}><ScrambleText text={exp.company} delay={100} /></h3>
                   <p className="text-xs text-muted-foreground font-mono tracking-wider mt-1">{exp.subtitle}</p>
                 </div>
               </div>
@@ -125,7 +126,7 @@ export default function ExperienceTimeline() {
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 gap-2">
                         <div>
                           <h4 className="font-display font-bold text-lg uppercase tracking-wide" style={{ fontFamily: "'Oswald', sans-serif" }}>
-                            {role.title}
+                            <ScrambleText text={role.title} delay={j * 80} />
                           </h4>
                           <span className="font-mono text-xs text-accent tracking-widest">{role.rank}</span>
                         </div>
