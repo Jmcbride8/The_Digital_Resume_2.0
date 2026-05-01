@@ -1,59 +1,62 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Linkedin, MapPin, ArrowUpRight, TrendingUp, Users, Zap, Award } from "lucide-react";
-import Redacted from "@/components/Redacted";
+import { Mail, Linkedin, ArrowUpRight, TrendingUp, Users, Zap, Award, MapPin, Phone } from "lucide-react";
 
 const experiences = [
   {
-    company: "Toshiba → KIOXIA",
+    company: "KIOXIA (formerly Toshiba)",
     subtitle: "San Jose, CA · $5B IPO Dec 2024",
     period: "2015 – 2024",
+    logo: "https://logo.clearbit.com/kioxia.com",
+    logoFallback: "K",
     roles: [
       {
         title: "Director, Digital Transformation",
         period: "2021 – 2024",
         highlights: [
-          "Led global team of 10 — data scientists, engineers & analysts — executing cloud migration of CRM, ERP & forecasting platforms",
-          "Drove Oracle SCM replacement: [[$500K annual savings]], 85% faster S&OP cycle",
-          "Designed end-to-end 'Opportunity-to-Revenue' framework across SSD product lifecycle",
+          "Led global team of 10 — data scientists, engineers & analysts — migrating legacy CRM, ERP & forecasting to cloud infrastructure",
+          "Drove Oracle SCM replacement delivering $500K in annual savings and 85% faster S&OP turnaround",
+          "Designed end-to-end Opportunity-to-Revenue framework across the SSD product lifecycle",
         ],
       },
       {
         title: "Sr. Manager, Business Intelligence",
         period: "2018 – 2021",
         highlights: [
-          "Built BI practice from scratch after executive pitch — 120-user analytics ecosystem, data governance & cloud infrastructure",
-          "Eliminated [[$50M]] in contract violation exposure through compliance controls",
+          "Built BI practice from zero following direct C-suite pitch — deployed 120-user analytics ecosystem with full data governance",
+          "Eliminated $50M in contract violation exposure through rapid-response compliance framework",
         ],
       },
       {
         title: "Sr. Manager, Strategy & Planning",
         period: "2015 – 2018",
         highlights: [
-          "Directed [[$2B]] bi-annual S&OP campaigns in an [[$11B]] addressable market",
-          "Scaled planning from 10 to 120+ participants supporting 5× customer growth",
+          "Directed $2B bi-annual supply/demand campaigns across 1, 3 & 5-year horizons in an $11B addressable market",
+          "Scaled planning capacity from 10 to 120+ participants supporting 5× customer growth — zero operational disruption",
         ],
       },
     ],
   },
   {
-    company: "Western Digital (SanDisk)",
+    company: "Western Digital",
     subtitle: "San Jose, CA",
     period: "2012 – 2015",
+    logo: "https://logo.clearbit.com/westerndigital.com",
+    logoFallback: "WD",
     roles: [
       {
         title: "Marketing & Strategy Consultant",
         period: "2014 – 2015",
         highlights: [
-          "Supported [[$1.1B FusionIO acquisition]] — due diligence, integration planning & strategic assessment",
-          "Built TAM/SOM models across PCIe/SATA/SAS segments in the $2B SSD market",
+          "Embedded with exec leadership to support $1.1B FusionIO acquisition — due diligence, integration strategy & assessment",
+          "Constructed TAM/SOM intelligence models mapping PCIe/SATA/SAS segments across the $2B SSD market",
         ],
       },
       {
         title: "Operations Analyst",
         period: "2012 – 2014",
         highlights: [
-          "Managed weekly NAND allocation S&OP across $6B global supply chain",
-          "Automated supply allocation via linear programming — 40% reduction in execution time",
+          "Managed weekly global NAND allocation S&OP across a $6B supply chain with real-time international coordination",
+          "Automated supply allocation via linear programming, reducing execution time by 40%",
         ],
       },
     ],
@@ -73,33 +76,50 @@ const skills = [
   { category: "Technical", items: ["SQL", "Python / Flask", "Azure / SQL Server", "Data Warehousing", "SAP BI/BO"] },
 ];
 
-function RedactedInline({ text }) {
-  const parts = text.split(/(\[\[.*?\]\])/g);
+function CompanyLogo({ logo, fallback, size = 48 }) {
   return (
-    <>
-      {parts.map((part, i) => {
-        if (part.startsWith("[[") && part.endsWith("]]")) {
-          return <Redacted key={i}>{part.slice(2, -2)}</Redacted>;
-        }
-        return part;
-      })}
-    </>
+    <div
+      className="flex items-center justify-center rounded bg-neutral-50 border border-neutral-100 overflow-hidden shrink-0"
+      style={{ width: size, height: size }}
+    >
+      <img
+        src={logo}
+        alt={fallback}
+        className="object-contain p-1"
+        style={{ width: size - 8, height: size - 8 }}
+        onError={(e) => {
+          e.target.style.display = "none";
+          e.target.nextSibling.style.display = "flex";
+        }}
+      />
+      <span
+        className="hidden items-center justify-center text-xs font-bold text-neutral-400 w-full h-full"
+        style={{ display: "none" }}
+      >
+        {fallback}
+      </span>
+    </div>
   );
 }
 
 export default function ExecutiveView({ onSwitch }) {
   return (
-    <div className="min-h-screen bg-white text-neutral-900" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
+    <div className="min-h-screen text-neutral-900" style={{ background: "#FAFAFA", fontFamily: "'Rajdhani', sans-serif" }}>
 
       {/* Top nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-neutral-100">
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-neutral-200/60" style={{ background: "rgba(250,250,250,0.92)" }}>
         <div className="max-w-5xl mx-auto px-8 py-4 flex items-center justify-between">
-          <span className="text-xs tracking-[0.3em] uppercase text-neutral-400 font-medium">Jason McBride</span>
+          <div className="flex items-center gap-3">
+            <div className="w-6 h-6 bg-neutral-900 flex items-center justify-center">
+              <span className="text-white text-xs font-bold" style={{ fontFamily: "'Oswald', sans-serif" }}>J</span>
+            </div>
+            <span className="text-sm font-semibold tracking-wider text-neutral-800" style={{ fontFamily: "'Oswald', sans-serif" }}>JASON McBRIDE</span>
+          </div>
           <div className="flex items-center gap-6">
-            <a href="mailto:jasonmcbride.mba@gmail.com" className="text-xs tracking-widest uppercase text-neutral-400 hover:text-neutral-900 transition-colors">Contact</a>
+            <a href="mailto:jasonmcbride.mba@gmail.com" className="text-xs tracking-widest uppercase text-neutral-400 hover:text-neutral-900 transition-colors hidden md:block">Contact</a>
             <button
               onClick={onSwitch}
-              className="text-xs tracking-widest uppercase border border-neutral-200 px-4 py-1.5 text-neutral-400 hover:text-neutral-900 hover:border-neutral-900 transition-all"
+              className="text-xs tracking-widest uppercase border border-neutral-200 px-4 py-1.5 text-neutral-500 hover:text-neutral-900 hover:border-neutral-900 transition-all"
             >
               ⇄ Switch View
             </button>
@@ -107,48 +127,52 @@ export default function ExecutiveView({ onSwitch }) {
         </div>
       </nav>
 
-      <div className="max-w-5xl mx-auto px-8 pt-32 pb-24">
+      <div className="max-w-5xl mx-auto px-8 pt-28 pb-24">
 
         {/* HERO */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-24"
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-20 pt-8"
         >
-          <div className="grid md:grid-cols-2 gap-16 items-end">
-            <div>
-              <p className="text-xs tracking-[0.5em] uppercase text-neutral-400 mb-6">Executive Profile</p>
-              <h1 className="text-6xl md:text-7xl font-bold tracking-tight leading-none mb-6 text-neutral-900" style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: "-0.02em" }}>
-                Jason<br />McBride
+          <div className="grid md:grid-cols-5 gap-12 items-center">
+            <div className="md:col-span-3">
+              <p className="text-xs tracking-[0.6em] uppercase text-neutral-400 mb-5 font-medium">Executive Profile · Technology & Strategy</p>
+              <h1 className="font-bold leading-none mb-6 text-neutral-900"
+                style={{ fontFamily: "'Oswald', sans-serif", fontSize: "clamp(3rem, 8vw, 5.5rem)", letterSpacing: "-0.01em" }}>
+                Jason<br />
+                <span className="text-neutral-400">McBride</span>
               </h1>
-              <p className="text-lg text-neutral-500 leading-relaxed font-light max-w-sm">
-                Director-level executive specializing in digital transformation, business intelligence, and data-driven growth strategy.
+              <p className="text-base text-neutral-500 leading-relaxed max-w-md">
+                Director-level executive with 12+ years driving digital transformation, business intelligence, and data strategy across Fortune 500 technology companies.
               </p>
-            </div>
-            <div className="space-y-4">
-              <div className="h-px bg-neutral-100" />
-              {[
-                ["Location", "Goleta, CA"],
-                ["MBA", "University of Southern California"],
-                ["Clearance", "TS/SCI (Former)"],
-                ["Availability", "Open to Opportunities"],
-              ].map(([k, v]) => (
-                <div key={k} className="flex justify-between items-baseline py-2 border-b border-neutral-50">
-                  <span className="text-xs tracking-widest uppercase text-neutral-400">{k}</span>
-                  <span className="text-sm text-neutral-700 font-medium">{v}</span>
-                </div>
-              ))}
-              <div className="flex gap-3 pt-4">
+              <div className="flex flex-wrap gap-3 mt-8">
                 <a href="mailto:jasonmcbride.mba@gmail.com"
-                  className="flex items-center gap-2 text-xs tracking-widest uppercase bg-neutral-900 text-white px-4 py-2.5 hover:bg-neutral-700 transition-colors">
-                  <Mail className="w-3 h-3" /> Email
+                  className="flex items-center gap-2 text-sm font-medium bg-neutral-900 text-white px-5 py-2.5 hover:bg-neutral-700 transition-colors">
+                  <Mail className="w-4 h-4" /> Get in Touch
                 </a>
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs tracking-widest uppercase border border-neutral-200 px-4 py-2.5 text-neutral-600 hover:border-neutral-900 hover:text-neutral-900 transition-all">
-                  <Linkedin className="w-3 h-3" /> LinkedIn <ArrowUpRight className="w-3 h-3" />
+                  className="flex items-center gap-2 text-sm font-medium border border-neutral-200 px-5 py-2.5 text-neutral-700 hover:border-neutral-900 hover:text-neutral-900 transition-all">
+                  <Linkedin className="w-4 h-4" /> LinkedIn <ArrowUpRight className="w-3 h-3" />
                 </a>
               </div>
+            </div>
+            <div className="md:col-span-2 space-y-0 border border-neutral-100 divide-y divide-neutral-100">
+              {[
+                [MapPin, "Location", "Goleta, CA"],
+                [Award, "MBA", "Univ. of Southern California"],
+                [Phone, "Phone", "(408) 609-8558"],
+                [Zap, "Status", "Open to Opportunities"],
+              ].map(([Icon, k, v]) => (
+                <div key={k} className="flex items-center gap-4 px-5 py-4 bg-white">
+                  <Icon className="w-4 h-4 text-neutral-300 shrink-0" />
+                  <div>
+                    <div className="text-xs text-neutral-400 tracking-widest uppercase">{k}</div>
+                    <div className="text-sm text-neutral-800 font-medium mt-0.5">{v}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -158,28 +182,35 @@ export default function ExecutiveView({ onSwitch }) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-neutral-100 mb-24"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20"
         >
           {stats.map((s, i) => {
             const Icon = s.icon;
             return (
-              <div key={i} className="bg-white p-8 text-center">
-                <Icon className="w-5 h-5 text-neutral-300 mx-auto mb-4" />
-                <div className="text-3xl font-bold text-neutral-900 mb-2" style={{ fontFamily: "'Oswald', sans-serif" }}>{s.value}</div>
-                <div className="text-xs text-neutral-400 tracking-wide leading-relaxed">{s.label}</div>
-              </div>
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="bg-white border border-neutral-100 p-6 group hover:border-neutral-300 transition-colors"
+              >
+                <Icon className="w-5 h-5 text-neutral-300 mb-4 group-hover:text-neutral-500 transition-colors" />
+                <div className="text-3xl font-bold text-neutral-900 mb-1.5" style={{ fontFamily: "'Oswald', sans-serif" }}>{s.value}</div>
+                <div className="text-xs text-neutral-400 leading-relaxed">{s.label}</div>
+              </motion.div>
             );
           })}
         </motion.div>
 
         {/* EXPERIENCE */}
-        <section className="mb-24">
+        <section className="mb-20">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex items-center gap-6 mb-12">
-            <h2 className="text-xs tracking-[0.5em] uppercase text-neutral-400">Experience</h2>
-            <div className="flex-1 h-px bg-neutral-100" />
+            <h2 className="text-xs tracking-[0.5em] uppercase text-neutral-400 shrink-0">Experience</h2>
+            <div className="flex-1 h-px bg-neutral-200" />
           </motion.div>
 
-          <div className="space-y-16">
+          <div className="space-y-12">
             {experiences.map((exp, i) => (
               <motion.div
                 key={i}
@@ -187,24 +218,31 @@ export default function ExecutiveView({ onSwitch }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
+                className="bg-white border border-neutral-100 overflow-hidden"
               >
-                <div className="flex items-baseline justify-between mb-6">
-                  <h3 className="text-2xl font-bold text-neutral-900" style={{ fontFamily: "'Oswald', sans-serif" }}>{exp.company}</h3>
-                  <span className="text-xs text-neutral-400 tracking-widest">{exp.period}</span>
+                {/* Company header */}
+                <div className="flex items-center gap-5 px-7 py-5 border-b border-neutral-100">
+                  <CompanyLogo logo={exp.logo} fallback={exp.logoFallback} size={52} />
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-xl font-bold text-neutral-900" style={{ fontFamily: "'Oswald', sans-serif" }}>{exp.company}</h3>
+                    <p className="text-xs text-neutral-400 tracking-wide mt-0.5">{exp.subtitle}</p>
+                  </div>
+                  <span className="text-xs text-neutral-400 tracking-widest shrink-0 hidden md:block">{exp.period}</span>
                 </div>
-                <p className="text-xs text-neutral-400 tracking-widest uppercase mb-8 -mt-4">{exp.subtitle}</p>
 
-                <div className="space-y-8 pl-6 border-l border-neutral-100">
+                {/* Roles */}
+                <div className="divide-y divide-neutral-50">
                   {exp.roles.map((role, j) => (
-                    <div key={j}>
-                      <div className="flex items-baseline justify-between mb-3">
+                    <div key={j} className="px-7 py-6">
+                      <div className="flex items-baseline justify-between mb-4 gap-4">
                         <h4 className="text-base font-semibold text-neutral-800">{role.title}</h4>
-                        <span className="text-xs text-neutral-400 tracking-widest shrink-0 ml-4">{role.period}</span>
+                        <span className="text-xs text-neutral-400 tracking-widest shrink-0 bg-neutral-50 px-2 py-0.5">{role.period}</span>
                       </div>
-                      <ul className="space-y-2">
+                      <ul className="space-y-2.5">
                         {role.highlights.map((h, k) => (
-                          <li key={k} className="text-sm text-neutral-500 leading-relaxed pl-4 border-l-2 border-neutral-100">
-                            <RedactedInline text={h} />
+                          <li key={k} className="text-sm text-neutral-600 leading-relaxed flex gap-3">
+                            <span className="w-1 h-1 rounded-full bg-neutral-300 mt-2 shrink-0" />
+                            {h}
                           </li>
                         ))}
                       </ul>
@@ -217,12 +255,12 @@ export default function ExecutiveView({ onSwitch }) {
         </section>
 
         {/* SKILLS */}
-        <section className="mb-24">
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex items-center gap-6 mb-12">
-            <h2 className="text-xs tracking-[0.5em] uppercase text-neutral-400">Core Competencies</h2>
-            <div className="flex-1 h-px bg-neutral-100" />
+        <section className="mb-20">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex items-center gap-6 mb-10">
+            <h2 className="text-xs tracking-[0.5em] uppercase text-neutral-400 shrink-0">Core Competencies</h2>
+            <div className="flex-1 h-px bg-neutral-200" />
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-4">
             {skills.map((group, i) => (
               <motion.div
                 key={i}
@@ -230,12 +268,13 @@ export default function ExecutiveView({ onSwitch }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
+                className="bg-white border border-neutral-100 px-6 py-5"
               >
-                <p className="text-xs tracking-[0.4em] uppercase text-neutral-300 mb-4">{group.category}</p>
-                <ul className="space-y-2">
+                <p className="text-xs tracking-[0.4em] uppercase text-neutral-400 mb-4 pb-3 border-b border-neutral-100">{group.category}</p>
+                <ul className="space-y-2.5">
                   {group.items.map((item, j) => (
-                    <li key={j} className="text-sm text-neutral-600 flex items-center gap-3">
-                      <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                    <li key={j} className="text-sm text-neutral-700 flex items-center gap-3 font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-200 shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -250,12 +289,12 @@ export default function ExecutiveView({ onSwitch }) {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="border-t border-neutral-100 pt-12 flex flex-col md:flex-row items-center justify-between gap-4"
+          className="border-t border-neutral-200 pt-10 flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <p className="text-xs text-neutral-300 tracking-widest">© {new Date().getFullYear()} Jason McBride</p>
-          <div className="flex items-center gap-6">
-            <a href="mailto:jasonmcbride.mba@gmail.com" className="text-xs text-neutral-400 hover:text-neutral-900 transition-colors tracking-widest">jasonmcbride.mba@gmail.com</a>
-            <a href="tel:4086098558" className="text-xs text-neutral-400 hover:text-neutral-900 transition-colors tracking-widest">(408) 609-8558</a>
+          <div className="flex flex-wrap items-center gap-6">
+            <a href="mailto:jasonmcbride.mba@gmail.com" className="text-xs text-neutral-400 hover:text-neutral-900 transition-colors">jasonmcbride.mba@gmail.com</a>
+            <a href="tel:4086098558" className="text-xs text-neutral-400 hover:text-neutral-900 transition-colors">(408) 609-8558</a>
           </div>
         </motion.div>
       </div>
