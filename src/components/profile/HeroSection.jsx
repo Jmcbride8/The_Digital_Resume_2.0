@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, Linkedin, MapPin, ChevronDown, Shield, Star } from "lucide-react";
 import { useEffect, useState } from "react";
+import RadarBackground from "@/components/RadarBackground";
+import GlitchName from "@/components/GlitchName";
+import { useSound } from "@/components/SoundManager";
 
 const HERO_BG = "https://media.base44.com/images/public/69f42b9511a51fd215a41bde/f7a80edfe_generated_image.png";
 const AVATAR = "https://media.base44.com/images/public/69f42b9511a51fd215a41bde/1e10132b5_generated_image.png";
@@ -46,6 +49,8 @@ function HUDCorner({ position }) {
 }
 
 export default function HeroSection() {
+  const { play } = useSound();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
@@ -54,12 +59,17 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/75 to-background" />
       </div>
 
+      {/* Radar animation */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <RadarBackground />
+      </div>
+
       {/* Tactical grid */}
       <div
         className="absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
-            "linear-gradient(hsl(82,55%,42%) 1px, transparent 1px), linear-gradient(90deg, hsl(82,55%,42%) 1px, transparent 1px)",
+            "linear-gradient(hsl(82,70%,58%) 1px, transparent 1px), linear-gradient(90deg, hsl(82,70%,58%) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
@@ -69,7 +79,7 @@ export default function HeroSection() {
         className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
-            "radial-gradient(ellipse at 20% 50%, hsl(82,55%,42%) 0%, transparent 60%), radial-gradient(ellipse at 80% 30%, hsl(82,55%,42%) 0%, transparent 50%)",
+            "radial-gradient(ellipse at 20% 50%, hsl(82,70%,58%) 0%, transparent 60%), radial-gradient(ellipse at 80% 30%, hsl(82,70%,58%) 0%, transparent 50%)",
         }}
       />
 
@@ -140,10 +150,12 @@ export default function HeroSection() {
             className="text-6xl md:text-8xl font-display font-bold tracking-wider uppercase mb-2 flicker"
             style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: "0.15em" }}
           >
-            Jason{" "}
-            <span className="text-primary" style={{ textShadow: "0 0 30px hsl(82,55%,42%), 0 0 60px hsl(82,55%,42%,0.3)" }}>
-              McBride
-            </span>
+            <GlitchName>
+              Jason{" "}
+              <span className="text-primary" style={{ textShadow: "0 0 30px hsl(82,70%,58%), 0 0 60px hsl(82,70%,58%,0.3)" }}>
+                McBride
+              </span>
+            </GlitchName>
           </h1>
 
           {/* MOS / specialty line */}
@@ -162,13 +174,13 @@ export default function HeroSection() {
 
           {/* Contact bar */}
           <div className="flex flex-wrap items-center justify-center gap-3 text-sm">
-            <a href="mailto:jasonmcbride.mba@gmail.com" className="flex items-center gap-2 px-4 py-2 border border-primary/40 hover:bg-primary/10 hover:border-primary text-primary/80 hover:text-primary transition-all duration-200 font-mono text-xs tracking-wider uppercase">
+            <a href="mailto:jasonmcbride.mba@gmail.com" onMouseEnter={() => play("hover")} onClick={() => play("click")} className="flex items-center gap-2 px-4 py-2 border border-primary/40 hover:bg-primary/10 hover:border-primary text-primary/80 hover:text-primary transition-all duration-200 font-mono text-xs tracking-wider uppercase">
               <Mail className="w-3 h-3" /> COMMS
             </a>
-            <a href="tel:4086098558" className="flex items-center gap-2 px-4 py-2 border border-primary/40 hover:bg-primary/10 hover:border-primary text-primary/80 hover:text-primary transition-all duration-200 font-mono text-xs tracking-wider uppercase">
+            <a href="tel:4086098558" onMouseEnter={() => play("hover")} onClick={() => play("click")} className="flex items-center gap-2 px-4 py-2 border border-primary/40 hover:bg-primary/10 hover:border-primary text-primary/80 hover:text-primary transition-all duration-200 font-mono text-xs tracking-wider uppercase">
               <Phone className="w-3 h-3" /> (408) 609-8558
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 border border-primary/40 hover:bg-primary/10 hover:border-primary text-primary/80 hover:text-primary transition-all duration-200 font-mono text-xs tracking-wider uppercase">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" onMouseEnter={() => play("hover")} onClick={() => play("click")} className="flex items-center gap-2 px-4 py-2 border border-primary/40 hover:bg-primary/10 hover:border-primary text-primary/80 hover:text-primary transition-all duration-200 font-mono text-xs tracking-wider uppercase">
               <Linkedin className="w-3 h-3" /> LINKEDIN
             </a>
             <span className="flex items-center gap-2 px-4 py-2 border border-border text-muted-foreground font-mono text-xs tracking-wider uppercase">

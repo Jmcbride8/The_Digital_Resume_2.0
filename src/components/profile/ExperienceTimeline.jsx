@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Shield, Crosshair, Database, BarChart3, Layers, Cog, ChevronRight } from "lucide-react";
 import ScrambleText from "@/components/ScrambleText";
+import Redacted from "@/components/Redacted";
 
 const experiences = [
   {
@@ -25,7 +26,7 @@ const experiences = [
         icon: Database,
         highlights: [
           "Built BI unit from zero after direct pitch to C-suite — deployed cloud analytics, data governance & centralized ecosystem for 120 users",
-          "Eliminated $50M contract violation exposure by establishing execution control protocols and rapid-response compliance framework",
+          "Eliminated [[$50M]] contract violation exposure by establishing execution control protocols and rapid-response compliance framework",
         ],
       },
       {
@@ -34,7 +35,7 @@ const experiences = [
         period: "2015 – 2018",
         icon: BarChart3,
         highlights: [
-          "Commanded $2B bi-annual supply/demand campaigns across 1, 3 & 5-year strategic horizons for an $11B addressable market",
+          "Commanded [[$2B]] bi-annual supply/demand campaigns across 1, 3 & 5-year strategic horizons for an [[$11B]] addressable market",
           "Scaled planning capability from 10 to 120+ participants supporting 5X customer growth — no operational disruption",
         ],
       },
@@ -50,7 +51,7 @@ const experiences = [
         period: "2014 – 2015",
         icon: Layers,
         highlights: [
-          "Embedded with exec leadership to support $1.1B FusionIO acquisition integration — due diligence & strategic assessment",
+          "Embedded with exec leadership to support [[$1.1B FusionIO acquisition]] integration — due diligence & strategic assessment",
           "Built TAM/SOM market intelligence models mapping PCIe/SATA/SAS segments across the $2B SSD theater",
         ],
       },
@@ -136,12 +137,23 @@ export default function ExperienceTimeline() {
                       </div>
 
                       <ul className="space-y-2">
-                        {role.highlights.map((h, k) => (
-                          <li key={k} className="text-base text-foreground/85 leading-relaxed flex gap-2">
-                            <ChevronRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                            <span>{h}</span>
-                          </li>
-                        ))}
+                        {role.highlights.map((h, k) => {
+                          // Split on [[...]] markers for redacted segments
+                          const parts = h.split(/(\[\[.*?\]\])/g);
+                          return (
+                            <li key={k} className="text-base text-foreground/85 leading-relaxed flex gap-2">
+                              <ChevronRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                              <span>
+                                {parts.map((part, pi) => {
+                                  if (part.startsWith("[[") && part.endsWith("]]")) {
+                                    return <Redacted key={pi}>{part.slice(2, -2)}</Redacted>;
+                                  }
+                                  return part;
+                                })}
+                              </span>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </motion.div>
                   );

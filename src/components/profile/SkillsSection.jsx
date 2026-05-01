@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import ScrambleText from "@/components/ScrambleText";
+import SkillRadarChart from "@/components/SkillRadarChart";
 
 const skillGroups = [
   {
@@ -70,6 +71,13 @@ export default function SkillsSection() {
           </h2>
           <div className="h-px w-24 bg-primary mt-3" />
         </motion.div>
+
+        {/* Radar Chart */}
+        <div className="mb-16 p-6 border border-primary/20 bg-card relative"
+          style={{ clipPath: "polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%)" }}>
+          <div className="absolute top-0 right-0 w-5 h-5 bg-primary/20 border-b border-l border-primary/40" />
+          <SkillRadarChart />
+        </div>
 
         <div className="space-y-12">
           {skillGroups.map((group, i) => (
