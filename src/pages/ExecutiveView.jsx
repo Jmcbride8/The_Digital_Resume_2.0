@@ -3,6 +3,25 @@ import { Mail, Linkedin, ArrowUpRight, TrendingUp, Users, Zap, Award, MapPin, Ph
 
 const experiences = [
   {
+    company: "Rapidus Design Solutions",
+    subtitle: "Santa Clara, CA · Semiconductor Tech Startup",
+    period: "2025 – Present",
+    logo: "https://logo.clearbit.com/rapidus.inc",
+    logoFallback: "RDS",
+    roles: [
+      {
+        title: "Customer Enablement Manager",
+        period: "Nov 2025 – Present",
+        highlights: [
+          "Own end-to-end customer portal experience — onboarding, permissions, escalations, and UAT — for a pioneering semiconductor design platform",
+          "Drive quotation and pricing analysis, ensuring accuracy and consistency across systems while supporting customer success initiatives",
+          "Champion AI, automation, and workflow innovations to unlock scale; partner with cross-functional teams (engineering, sales, marketing) to align portal capabilities with business priorities",
+          "Contribute business intelligence and analytics insights directly to executive leadership under Chief of Staff to the President",
+        ],
+      },
+    ],
+  },
+  {
     company: "KIOXIA (formerly Toshiba)",
     subtitle: "San Jose, CA · $5B IPO Dec 2024",
     period: "2015 – 2024",

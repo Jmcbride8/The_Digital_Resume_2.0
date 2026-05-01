@@ -5,6 +5,24 @@ import Redacted from "@/components/Redacted";
 
 const experiences = [
   {
+    company: "Rapidus Design Solutions",
+    subtitle: "THEATER: Santa Clara, CA · SEMICONDUCTOR STARTUP",
+    roles: [
+      {
+        title: "Customer Enablement Manager",
+        rank: "O-7 // BG",
+        period: "2025 – Present",
+        icon: Shield,
+        highlights: [
+          "Own end-to-end customer portal — onboarding, permissions, escalations & UAT — for a pioneering semiconductor design platform subsidiary of Rapidus Corporation",
+          "Drive quotation and pricing analysis; champion AI, automation & workflow innovations to unlock scale and efficiency",
+          "Contribute [[$BI analytics]] insights to executive leadership reporting directly to Chief of Staff to the President",
+          "Partner with cross-functional units (engineering, sales, marketing) to align portal capabilities with business priorities",
+        ],
+      },
+    ],
+  },
+  {
     company: "Toshiba → KIOXIA",
     subtitle: "THEATER: San Jose, CA · SPINOFF 2018 · $5B IPO DEC 2024",
     roles: [
