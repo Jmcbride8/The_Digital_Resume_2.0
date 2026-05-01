@@ -6,7 +6,7 @@ const experiences = [
     company: "KIOXIA (formerly Toshiba)",
     subtitle: "San Jose, CA · $5B IPO Dec 2024",
     period: "2015 – 2024",
-    logo: "https://logo.clearbit.com/kioxia.com",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Kioxia_logo.svg/320px-Kioxia_logo.svg.png",
     logoFallback: "K",
     roles: [
       {
@@ -40,7 +40,7 @@ const experiences = [
     company: "Western Digital",
     subtitle: "San Jose, CA",
     period: "2012 – 2015",
-    logo: "https://logo.clearbit.com/westerndigital.com",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Western_Digital_logo_%282025%29.svg/320px-Western_Digital_logo_%282025%29.svg.png",
     logoFallback: "WD",
     roles: [
       {
@@ -76,24 +76,20 @@ const skills = [
   { category: "Technical", items: ["SQL", "Python / Flask", "Azure / SQL Server", "Data Warehousing", "SAP BI/BO"] },
 ];
 
-function CompanyLogo({ logo, fallback, size = 48 }) {
+function CompanyLogo({ logo, fallback }) {
   return (
-    <div
-      className="flex items-center justify-center rounded bg-neutral-50 border border-neutral-100 overflow-hidden shrink-0"
-      style={{ width: size, height: size }}
-    >
+    <div className="flex items-center justify-center bg-white border border-neutral-100 overflow-hidden shrink-0 px-4 py-2" style={{ height: 48, minWidth: 120, maxWidth: 160 }}>
       <img
         src={logo}
         alt={fallback}
-        className="object-contain p-1"
-        style={{ width: size - 8, height: size - 8 }}
+        className="object-contain max-h-8 w-auto"
         onError={(e) => {
           e.target.style.display = "none";
           e.target.nextSibling.style.display = "flex";
         }}
       />
       <span
-        className="hidden items-center justify-center text-xs font-bold text-neutral-400 w-full h-full"
+        className="items-center justify-center text-sm font-bold text-neutral-400 w-full h-full"
         style={{ display: "none" }}
       >
         {fallback}
@@ -222,7 +218,7 @@ export default function ExecutiveView({ onSwitch }) {
               >
                 {/* Company header */}
                 <div className="flex items-center gap-5 px-7 py-5 border-b border-neutral-100">
-                  <CompanyLogo logo={exp.logo} fallback={exp.logoFallback} size={52} />
+                  <CompanyLogo logo={exp.logo} fallback={exp.logoFallback} />
                   <div className="flex-1 min-w-0">
                     <h3 className="text-xl font-bold text-neutral-900" style={{ fontFamily: "'Oswald', sans-serif" }}>{exp.company}</h3>
                     <p className="text-xs text-neutral-400 tracking-wide mt-0.5">{exp.subtitle}</p>
