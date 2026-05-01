@@ -97,10 +97,10 @@ function CompanyLogo({ logo, fallback, textColor = "#666" }) {
 
 export default function ExecutiveView({ onSwitch }) {
   return (
-    <div className="min-h-screen text-neutral-900" style={{ background: "#FAFAFA", fontFamily: "'Rajdhani', sans-serif" }}>
+    <div className="min-h-screen text-neutral-900" style={{ background: "#FFFFFF", fontFamily: "Georgia, 'Times New Roman', serif", position: "relative", zIndex: 9998 }}>
 
       {/* Top nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-neutral-200/60" style={{ background: "rgba(250,250,250,0.92)" }}>
+      <nav className="fixed top-0 left-0 right-0 z-[9999] border-b border-neutral-200" style={{ background: "#FFFFFF" }}>
         <div className="max-w-5xl mx-auto px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-6 h-6 bg-neutral-900 flex items-center justify-center">
@@ -137,7 +137,7 @@ export default function ExecutiveView({ onSwitch }) {
                 Jason<br />
                 <span className="text-neutral-400">McBride</span>
               </h1>
-              <p className="text-lg text-neutral-600 leading-relaxed max-w-md">
+              <p className="text-lg leading-relaxed max-w-md" style={{ color: "#374151", fontFamily: "Georgia, serif" }}>
                 Director-level executive with 12+ years driving digital transformation, business intelligence, and data strategy across Fortune 500 technology companies.
               </p>
               <div className="flex flex-wrap gap-3 mt-8">
@@ -186,7 +186,7 @@ export default function ExecutiveView({ onSwitch }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-white border border-neutral-100 p-6 group hover:border-neutral-300 transition-colors"
+                className="bg-white border border-neutral-200 p-6 group hover:border-neutral-400 transition-colors"
               >
                 <Icon className="w-5 h-5 text-neutral-400 mb-4 group-hover:text-neutral-600 transition-colors" />
                 <div className="text-4xl font-bold text-neutral-900 mb-2" style={{ fontFamily: "'Oswald', sans-serif" }}>{s.value}</div>
@@ -211,7 +211,7 @@ export default function ExecutiveView({ onSwitch }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-white border border-neutral-100 overflow-hidden"
+                className="bg-white border border-neutral-200 overflow-hidden"
               >
                 {/* Company header */}
                 <div className="flex items-center gap-5 px-7 py-5 border-b border-neutral-100">
@@ -233,7 +233,7 @@ export default function ExecutiveView({ onSwitch }) {
                       </div>
                       <ul className="space-y-2.5">
                         {role.highlights.map((h, k) => (
-                          <li key={k} className="text-base text-neutral-700 leading-relaxed flex gap-3">
+                          <li key={k} className="text-base leading-relaxed flex gap-3" style={{ color: "#374151", fontFamily: "Georgia, serif" }}>
                             <span className="w-1 h-1 rounded-full bg-neutral-300 mt-2 shrink-0" />
                             {h}
                           </li>
@@ -261,12 +261,12 @@ export default function ExecutiveView({ onSwitch }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white border border-neutral-100 px-6 py-5"
+                className="bg-white border border-neutral-200 px-6 py-5"
               >
                 <p className="text-sm tracking-[0.3em] uppercase text-neutral-600 font-bold mb-4 pb-3 border-b border-neutral-200">{group.category}</p>
                 <ul className="space-y-2.5">
                   {group.items.map((item, j) => (
-                    <li key={j} className="text-base text-neutral-700 flex items-center gap-3 font-medium">
+                    <li key={j} className="text-base flex items-center gap-3 font-medium" style={{ color: "#1f2937", fontFamily: "Georgia, serif" }}>
                       <span className="w-1.5 h-1.5 rounded-full bg-neutral-200 shrink-0" />
                       {item}
                     </li>
