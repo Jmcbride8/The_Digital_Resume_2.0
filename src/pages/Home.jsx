@@ -2,8 +2,8 @@ import HeroSection from "../components/profile/HeroSection";
 import ImpactStats from "../components/profile/ImpactStats";
 import ExperienceTimeline from "../components/profile/ExperienceTimeline";
 import SkillsSection from "../components/profile/SkillsSection";
-import EducationSection from "../components/profile/EducationSection";
 import AppsPortfolio from "../components/profile/AppsPortfolio";
+import EducationSection from "../components/profile/EducationSection";
 import FooterSection from "../components/profile/FooterSection";
 
 export default function Home() {

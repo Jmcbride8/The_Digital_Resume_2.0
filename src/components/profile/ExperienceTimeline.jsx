@@ -1,63 +1,66 @@
 import { motion } from "framer-motion";
-import { Building2, TrendingUp, Database, BarChart3, Layers, Cog } from "lucide-react";
+import { Shield, Crosshair, Database, BarChart3, Layers, Cog, ChevronRight } from "lucide-react";
 
 const experiences = [
   {
     company: "Toshiba → KIOXIA",
-    subtitle: "Spun off 2018 · $5B IPO Dec 2024",
-    location: "San Jose, CA",
+    subtitle: "THEATER: San Jose, CA · SPINOFF 2018 · $5B IPO DEC 2024",
     roles: [
       {
         title: "Director, Digital Transformation",
+        rank: "O-6 // COL",
         period: "2021 – 2024",
-        icon: TrendingUp,
+        icon: Shield,
         highlights: [
-          "Led global team of 10 — data scientists, developers & analysts — migrating legacy CRM, ERP & forecasting to cloud",
-          "Spearheaded Oracle SCM replacement: $500K annual savings, 85% faster S&OP turnaround",
-          "Led cross-functional 'Opportunity-to-Revenue' processes streamlining SSD product lifecycle",
+          "Commanded global team of 10 — data scientists, developers & analysts — executing migration of legacy CRM, ERP & forecasting to cloud infrastructure",
+          "Led Oracle SCM replacement operation: $500K annual savings, 85% faster S&OP turnaround — strategic objective achieved",
+          "Spearheaded cross-functional 'Opportunity-to-Revenue' doctrine streamlining SSD product lifecycle from first contact to close",
         ],
       },
       {
         title: "Sr Manager, Business Intelligence",
+        rank: "O-5 // LTC",
         period: "2018 – 2021",
         icon: Database,
         highlights: [
-          "Built BI team from scratch after pitching directly to CEO — cloud analytics, data governance, centralized data ecosystem for 120 users",
-          "Eliminated contract violation fines by establishing execution control processes after a $50M incident",
+          "Built BI unit from zero after direct pitch to C-suite — deployed cloud analytics, data governance & centralized ecosystem for 120 users",
+          "Eliminated $50M contract violation exposure by establishing execution control protocols and rapid-response compliance framework",
         ],
       },
       {
         title: "Sr Manager, Strategy & Planning",
+        rank: "O-4 // MAJ",
         period: "2015 – 2018",
         icon: BarChart3,
         highlights: [
-          "Drove $2B bi-annual supply/demand plans across 1, 3 & 5-year horizons for an $11B addressable market",
-          "Scaled planning from 10 to 120+ participants supporting 5X customers",
+          "Commanded $2B bi-annual supply/demand campaigns across 1, 3 & 5-year strategic horizons for an $11B addressable market",
+          "Scaled planning capability from 10 to 120+ participants supporting 5X customer growth — no operational disruption",
         ],
       },
     ],
   },
   {
-    company: "Western Digital",
-    subtitle: "Formerly SanDisk",
-    location: "San Jose, CA",
+    company: "Western Digital (SanDisk)",
+    subtitle: "THEATER: San Jose, CA",
     roles: [
       {
         title: "Marketing & Strategy Consultant",
+        rank: "O-3 // CPT",
         period: "2014 – 2015",
         icon: Layers,
         highlights: [
-          "Supported $1.1B FusionIO acquisition integration due diligence for executive leadership",
-          "Built TAM & SOM market models mapping PCIe/SATA/SAS segments for the $2B SSD market",
+          "Embedded with exec leadership to support $1.1B FusionIO acquisition integration — due diligence & strategic assessment",
+          "Built TAM/SOM market intelligence models mapping PCIe/SATA/SAS segments across the $2B SSD theater",
         ],
       },
       {
         title: "Operations Analyst",
+        rank: "O-2 // 1LT",
         period: "2012 – 2014",
         icon: Cog,
         highlights: [
-          "Managed weekly global NAND allocation S&OP across $6B supply",
-          "Developed supply allocation automation via linear programming — 40% process time reduction",
+          "Managed weekly global NAND allocation S&OP across $6B supply — real-time coordination across international units",
+          "Engineered supply allocation automation via linear programming — 40% reduction in mission execution time",
         ],
       },
     ],
@@ -74,11 +77,14 @@ export default function ExperienceTimeline() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <p className="text-primary font-mono text-sm tracking-[0.3em] uppercase mb-3">Career</p>
-          <h2 className="text-3xl md:text-4xl font-bold">Experience</h2>
+          <p className="font-mono text-xs text-primary/60 tracking-[0.4em] uppercase mb-3">◆ PERSONNEL FILE // DECLASSIFIED</p>
+          <h2 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-widest" style={{ fontFamily: "'Oswald', sans-serif" }}>
+            Deployment Record
+          </h2>
+          <div className="h-px w-24 bg-primary mt-3" />
         </motion.div>
 
-        <div className="space-y-16">
+        <div className="space-y-20">
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
@@ -87,15 +93,19 @@ export default function ExperienceTimeline() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
             >
-              <div className="flex items-center gap-3 mb-8">
-                <Building2 className="w-5 h-5 text-primary" />
+              {/* Unit header */}
+              <div className="flex items-start gap-4 mb-8 p-4 border border-primary/30 bg-secondary/40 relative">
+                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary" />
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary" />
+                <Crosshair className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <h3 className="text-xl font-bold">{exp.company}</h3>
-                  <p className="text-sm text-muted-foreground">{exp.subtitle} · {exp.location}</p>
+                  <h3 className="font-display text-xl font-bold uppercase tracking-widest" style={{ fontFamily: "'Oswald', sans-serif" }}>{exp.company}</h3>
+                  <p className="text-xs text-muted-foreground font-mono tracking-wider mt-1">{exp.subtitle}</p>
                 </div>
               </div>
 
-              <div className="relative ml-2 border-l border-border pl-8 space-y-10">
+              {/* Roles */}
+              <div className="relative ml-2 border-l-2 border-primary/20 pl-8 space-y-10">
                 {exp.roles.map((role, j) => {
                   const Icon = role.icon;
                   return (
@@ -107,17 +117,27 @@ export default function ExperienceTimeline() {
                       transition={{ delay: j * 0.1 }}
                       className="relative"
                     >
-                      <div className="absolute -left-[2.55rem] top-1 w-5 h-5 rounded-full bg-secondary border border-primary/30 flex items-center justify-center">
+                      {/* Timeline node */}
+                      <div className="absolute -left-[2.6rem] top-1 w-5 h-5 bg-background border-2 border-primary/50 flex items-center justify-center">
                         <Icon className="w-3 h-3 text-primary" />
                       </div>
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                        <h4 className="font-semibold text-lg">{role.title}</h4>
-                        <span className="text-sm font-mono text-muted-foreground">{role.period}</span>
+
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 gap-2">
+                        <div>
+                          <h4 className="font-display font-bold text-lg uppercase tracking-wide" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                            {role.title}
+                          </h4>
+                          <span className="font-mono text-xs text-accent tracking-widest">{role.rank}</span>
+                        </div>
+                        <span className="font-mono text-xs text-muted-foreground border border-border px-2 py-1 shrink-0">
+                          {role.period}
+                        </span>
                       </div>
+
                       <ul className="space-y-2">
                         {role.highlights.map((h, k) => (
                           <li key={k} className="text-sm text-muted-foreground leading-relaxed flex gap-2">
-                            <span className="text-primary mt-1.5 shrink-0">›</span>
+                            <ChevronRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                             <span>{h}</span>
                           </li>
                         ))}
