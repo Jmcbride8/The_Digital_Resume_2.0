@@ -42,7 +42,7 @@ const experiences = [
     ],
   },
   {
-    company: "Western Digital (SanDisk)",
+    company: "SanDisk",
     subtitle: "THEATER: San Jose, CA",
     roles: [
       {

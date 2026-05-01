@@ -37,7 +37,7 @@ const experiences = [
     ],
   },
   {
-    company: "SanDisk (Western Digital)",
+    company: "SanDisk",
     subtitle: "San Jose, CA",
     period: "2012 – 2015",
     logo: "https://logo.clearbit.com/sandisk.com",
