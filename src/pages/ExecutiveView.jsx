@@ -37,11 +37,11 @@ const experiences = [
     ],
   },
   {
-    company: "Western Digital",
+    company: "SanDisk (Western Digital)",
     subtitle: "San Jose, CA",
     period: "2012 – 2015",
-    logo: "https://logo.clearbit.com/westerndigital.com",
-    logoFallback: "Western Digital",
+    logo: "https://logo.clearbit.com/sandisk.com",
+    logoFallback: "SanDisk",
     roles: [
       {
         title: "Marketing & Strategy Consultant",
