@@ -1,6 +1,31 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Linkedin, ArrowUpRight, MapPin, X, ChevronDown } from "lucide-react";
+import { Mail, Linkedin, ArrowUpRight, MapPin, X, ChevronDown, Upload } from "lucide-react";
+
+function ImageUploadOverlay({ onUpload }) {
+  const ref = useRef();
+  return (
+    <>
+      <input
+        ref={ref}
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={e => {
+          const file = e.target.files[0];
+          if (file) onUpload(URL.createObjectURL(file));
+          e.target.value = "";
+        }}
+      />
+      <button
+        onClick={e => { e.stopPropagation(); ref.current.click(); }}
+        className="absolute top-4 left-4 z-20 flex items-center gap-1.5 text-xs tracking-widest uppercase bg-black/60 text-white/70 border border-white/20 px-3 py-2 hover:bg-black/80 hover:text-white transition-all backdrop-blur-sm"
+      >
+        <Upload className="w-3 h-3" /> Upload Photo
+      </button>
+    </>
+  );
+}
 
 const experiences = [
   {
@@ -61,6 +86,9 @@ const skills = [
 
 export default function StudioView({ onSwitch }) {
   const [activeCard, setActiveCard] = useState(null);
+  const [heroImage, setHeroImage] = useState("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1800&q=90&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.3");
+  const [cardImages, setCardImages] = useState(experiences.map(e => e.image));
+  const updateCardImage = (i, url) => setCardImages(prev => prev.map((img, idx) => idx === i ? url : img));
 
   return (
     <div className="min-h-screen bg-black text-white"
@@ -91,11 +119,12 @@ export default function StudioView({ onSwitch }) {
         style={{ height: "100vh", minHeight: 600 }}
       >
         <img
-          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1800&q=90&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.3"
+          src={heroImage}
           alt="hero"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ filter: "brightness(0.35) saturate(0.4)" }}
         />
+        <ImageUploadOverlay onUpload={setHeroImage} />
         {/* Gradient overlay */}
         <div className="absolute inset-0"
           style={{ background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%)" }} />
@@ -119,7 +148,7 @@ export default function StudioView({ onSwitch }) {
               letterSpacing: "-0.04em",
             }}>
             Jason<br />
-            <span style={{ fontWeight: 200, fontStyle: "italic", letterSpacing: "-0.02em" }}>McBride</span>
+            <span style={{ fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.02em", color: "rgba(255,255,255,0.82)" }}>McBride</span>
           </motion.h1>
           <motion.div
             initial={{ opacity: 0 }}
@@ -197,7 +226,7 @@ export default function StudioView({ onSwitch }) {
                 {/* Photo */}
                 <div className="relative overflow-hidden" style={{ height: activeCard === i ? 480 : 320, transition: "height 0.6s cubic-bezier(0.16,1,0.3,1)" }}>
                   <img
-                    src={exp.image}
+                    src={cardImages[i]}
                     alt={exp.company}
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     style={{
@@ -205,6 +234,7 @@ export default function StudioView({ onSwitch }) {
                       filter: "brightness(0.3) saturate(0.3)",
                     }}
                   />
+                  <ImageUploadOverlay onUpload={url => updateCardImage(i, url)} />
                   {/* Overlay */}
                   <div className="absolute inset-0"
                     style={{ background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 60%)" }} />
