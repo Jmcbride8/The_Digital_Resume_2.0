@@ -131,13 +131,13 @@ export default function ExecutiveView({ onSwitch }) {
         >
           <div className="grid md:grid-cols-5 gap-12 items-center">
             <div className="md:col-span-3">
-              <p className="text-xs tracking-[0.6em] uppercase text-neutral-400 mb-5 font-medium">Executive Profile · Technology & Strategy</p>
+              <p className="text-sm tracking-[0.4em] uppercase text-neutral-500 mb-5 font-semibold">Executive Profile · Technology & Strategy</p>
               <h1 className="font-bold leading-none mb-6 text-neutral-900"
                 style={{ fontFamily: "'Oswald', sans-serif", fontSize: "clamp(3rem, 8vw, 5.5rem)", letterSpacing: "-0.01em" }}>
                 Jason<br />
                 <span className="text-neutral-400">McBride</span>
               </h1>
-              <p className="text-base text-neutral-500 leading-relaxed max-w-md">
+              <p className="text-lg text-neutral-600 leading-relaxed max-w-md">
                 Director-level executive with 12+ years driving digital transformation, business intelligence, and data strategy across Fortune 500 technology companies.
               </p>
               <div className="flex flex-wrap gap-3 mt-8">
@@ -161,8 +161,8 @@ export default function ExecutiveView({ onSwitch }) {
                 <div key={k} className="flex items-center gap-4 px-5 py-4 bg-white">
                   <Icon className="w-4 h-4 text-neutral-300 shrink-0" />
                   <div>
-                    <div className="text-xs text-neutral-400 tracking-widest uppercase">{k}</div>
-                    <div className="text-sm text-neutral-800 font-medium mt-0.5">{v}</div>
+                    <div className="text-xs text-neutral-500 tracking-widest uppercase font-semibold">{k}</div>
+                    <div className="text-base text-neutral-800 font-semibold mt-0.5">{v}</div>
                   </div>
                 </div>
               ))}
@@ -188,9 +188,9 @@ export default function ExecutiveView({ onSwitch }) {
                 transition={{ delay: i * 0.08 }}
                 className="bg-white border border-neutral-100 p-6 group hover:border-neutral-300 transition-colors"
               >
-                <Icon className="w-5 h-5 text-neutral-300 mb-4 group-hover:text-neutral-500 transition-colors" />
-                <div className="text-3xl font-bold text-neutral-900 mb-1.5" style={{ fontFamily: "'Oswald', sans-serif" }}>{s.value}</div>
-                <div className="text-xs text-neutral-400 leading-relaxed">{s.label}</div>
+                <Icon className="w-5 h-5 text-neutral-400 mb-4 group-hover:text-neutral-600 transition-colors" />
+                <div className="text-4xl font-bold text-neutral-900 mb-2" style={{ fontFamily: "'Oswald', sans-serif" }}>{s.value}</div>
+                <div className="text-sm text-neutral-500 leading-relaxed font-medium">{s.label}</div>
               </motion.div>
             );
           })}
@@ -199,7 +199,7 @@ export default function ExecutiveView({ onSwitch }) {
         {/* EXPERIENCE */}
         <section className="mb-20">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex items-center gap-6 mb-12">
-            <h2 className="text-xs tracking-[0.5em] uppercase text-neutral-400 shrink-0">Experience</h2>
+            <h2 className="text-base tracking-[0.4em] uppercase text-neutral-700 font-bold shrink-0">Experience</h2>
             <div className="flex-1 h-px bg-neutral-200" />
           </motion.div>
 
@@ -217,8 +217,8 @@ export default function ExecutiveView({ onSwitch }) {
                 <div className="flex items-center gap-5 px-7 py-5 border-b border-neutral-100">
                   <CompanyLogo logo={exp.logo} fallback={exp.logoFallback} />
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-xl font-bold text-neutral-900" style={{ fontFamily: "'Oswald', sans-serif" }}>{exp.company}</h3>
-                    <p className="text-xs text-neutral-400 tracking-wide mt-0.5">{exp.subtitle}</p>
+                    <h3 className="text-2xl font-bold text-neutral-900" style={{ fontFamily: "'Oswald', sans-serif" }}>{exp.company}</h3>
+                    <p className="text-sm text-neutral-500 tracking-wide mt-0.5 font-medium">{exp.subtitle}</p>
                   </div>
                   <span className="text-xs text-neutral-400 tracking-widest shrink-0 hidden md:block">{exp.period}</span>
                 </div>
@@ -228,12 +228,12 @@ export default function ExecutiveView({ onSwitch }) {
                   {exp.roles.map((role, j) => (
                     <div key={j} className="px-7 py-6">
                       <div className="flex items-baseline justify-between mb-4 gap-4">
-                        <h4 className="text-base font-semibold text-neutral-800">{role.title}</h4>
-                        <span className="text-xs text-neutral-400 tracking-widest shrink-0 bg-neutral-50 px-2 py-0.5">{role.period}</span>
+                        <h4 className="text-lg font-bold text-neutral-800">{role.title}</h4>
+                        <span className="text-sm text-neutral-500 tracking-widest shrink-0 bg-neutral-100 px-2 py-0.5 font-medium">{role.period}</span>
                       </div>
                       <ul className="space-y-2.5">
                         {role.highlights.map((h, k) => (
-                          <li key={k} className="text-sm text-neutral-600 leading-relaxed flex gap-3">
+                          <li key={k} className="text-base text-neutral-700 leading-relaxed flex gap-3">
                             <span className="w-1 h-1 rounded-full bg-neutral-300 mt-2 shrink-0" />
                             {h}
                           </li>
@@ -250,7 +250,7 @@ export default function ExecutiveView({ onSwitch }) {
         {/* SKILLS */}
         <section className="mb-20">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex items-center gap-6 mb-10">
-            <h2 className="text-xs tracking-[0.5em] uppercase text-neutral-400 shrink-0">Core Competencies</h2>
+            <h2 className="text-base tracking-[0.4em] uppercase text-neutral-700 font-bold shrink-0">Core Competencies</h2>
             <div className="flex-1 h-px bg-neutral-200" />
           </motion.div>
           <div className="grid md:grid-cols-3 gap-4">
@@ -263,10 +263,10 @@ export default function ExecutiveView({ onSwitch }) {
                 transition={{ delay: i * 0.1 }}
                 className="bg-white border border-neutral-100 px-6 py-5"
               >
-                <p className="text-xs tracking-[0.4em] uppercase text-neutral-400 mb-4 pb-3 border-b border-neutral-100">{group.category}</p>
+                <p className="text-sm tracking-[0.3em] uppercase text-neutral-600 font-bold mb-4 pb-3 border-b border-neutral-200">{group.category}</p>
                 <ul className="space-y-2.5">
                   {group.items.map((item, j) => (
-                    <li key={j} className="text-sm text-neutral-700 flex items-center gap-3 font-medium">
+                    <li key={j} className="text-base text-neutral-700 flex items-center gap-3 font-medium">
                       <span className="w-1.5 h-1.5 rounded-full bg-neutral-200 shrink-0" />
                       {item}
                     </li>
@@ -284,10 +284,10 @@ export default function ExecutiveView({ onSwitch }) {
           viewport={{ once: true }}
           className="border-t border-neutral-200 pt-10 flex flex-col md:flex-row items-center justify-between gap-4"
         >
-          <p className="text-xs text-neutral-300 tracking-widest">© {new Date().getFullYear()} Jason McBride</p>
+          <p className="text-sm text-neutral-400 tracking-widest">© {new Date().getFullYear()} Jason McBride</p>
           <div className="flex flex-wrap items-center gap-6">
-            <a href="mailto:jasonmcbride.mba@gmail.com" className="text-xs text-neutral-400 hover:text-neutral-900 transition-colors">jasonmcbride.mba@gmail.com</a>
-            <a href="tel:4086098558" className="text-xs text-neutral-400 hover:text-neutral-900 transition-colors">(408) 609-8558</a>
+            <a href="mailto:jasonmcbride.mba@gmail.com" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">jasonmcbride.mba@gmail.com</a>
+            <a href="tel:4086098558" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">(408) 609-8558</a>
           </div>
         </motion.div>
       </div>
