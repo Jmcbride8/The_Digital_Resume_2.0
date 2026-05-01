@@ -12,6 +12,7 @@ import { SoundProvider } from "../components/SoundManager";
 import MissionBriefing from "../components/MissionBriefing";
 import AnalystView from "./AnalystView";
 import ExecutiveView from "./ExecutiveView";
+import StudioView from "./StudioView";
 
 export default function Home() {
   const [mode, setMode] = useState(null); // null | "operative" | "analyst"
@@ -61,6 +62,10 @@ export default function Home() {
 
       {mode === "executive" && (
         <ExecutiveView key="executive" onSwitch={handleSwitch} />
+      )}
+
+      {mode === "studio" && (
+        <StudioView key="studio" onSwitch={handleSwitch} />
       )}
     </SoundProvider>
   );

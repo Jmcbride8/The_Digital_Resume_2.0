@@ -59,6 +59,15 @@ export default function MissionBriefing({ onSelect }) {
       accentDim: "hsl(0,0%,25%)",
       accentBg: "hsl(0,0%,78%,0.06)",
     },
+    {
+      id: "studio",
+      code: "PROTOCOL // DELTA-9",
+      title: "Studio",
+      desc: ["CREATIVE GALLERY VIEW", "Vibrant · Visual · Bold", "For visionaries & collaborators"],
+      accent: "hsl(270,70%,65%)",
+      accentDim: "hsl(270,70%,28%)",
+      accentBg: "hsl(270,70%,65%,0.07)",
+    },
   ];
 
   return (
@@ -130,7 +139,7 @@ export default function MissionBriefing({ onSelect }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-4"
             >
               {protocols.map((p) => (
                 <motion.button
