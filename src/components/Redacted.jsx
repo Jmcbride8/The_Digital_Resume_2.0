@@ -30,13 +30,13 @@ export default function Redacted({ children, className = "" }) {
         >
           <span
             className="inline-block w-full h-[1.1em] bg-foreground/90 font-mono text-xs text-background/0 select-none px-1 relative overflow-hidden"
-            style={{ minWidth: "4em" }}
+            style={{ minWidth: "12em" }}
           >
             <span
               className="absolute inset-0 flex items-center justify-center font-mono text-xs tracking-widest"
               style={{ color: "rgba(0,0,0,0.35)", fontSize: "9px" }}
             >
-              ██████
+              ██████████████████
             </span>
           </span>
         </span>
