@@ -137,7 +137,7 @@ export default function ExperienceTimeline() {
 
                       <ul className="space-y-2">
                         {role.highlights.map((h, k) => (
-                          <li key={k} className="text-sm text-muted-foreground leading-relaxed flex gap-2">
+                          <li key={k} className="text-base text-foreground/85 leading-relaxed flex gap-2">
                             <ChevronRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                             <span>{h}</span>
                           </li>
