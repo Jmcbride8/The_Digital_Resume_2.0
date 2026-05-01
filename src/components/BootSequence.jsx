@@ -15,12 +15,6 @@ export default function BootSequence({ onComplete }) {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    // Check if already shown this session
-    if (sessionStorage.getItem("boot_shown")) {
-      onComplete();
-      return;
-    }
-
     let i = 0;
     const interval = setInterval(() => {
       if (i < LINES.length) {
@@ -30,7 +24,6 @@ export default function BootSequence({ onComplete }) {
         clearInterval(interval);
         setTimeout(() => {
           setDone(true);
-          sessionStorage.setItem("boot_shown", "1");
           setTimeout(onComplete, 600);
         }, 400);
       }
