@@ -1,19 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 
-const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&!?/\\|[]{}";
-const NUM_CHARS = "0123456789@#$%";
-
-function getCharSet(text) {
-  const hasLetters = /[a-zA-Z]/.test(text);
-  const hasNums = /[0-9]/.test(text);
-  if (hasLetters && !hasNums) return CHARS;
-  if (!hasLetters && hasNums) return NUM_CHARS;
-  return CHARS;
-}
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&!?";
 
 export function useScramble(text, isInView, delay = 0) {
-  const [displayed, setDisplayed] = useState(text);
-  const frameRef = useRef(null);
+  const [displayed, setDisplayed] = useState({ chars: text, resolvedCount: text.length });
+  const timerRef = useRef(null);
   const iterRef = useRef(0);
 
   useEffect(() => {
@@ -21,38 +12,37 @@ export function useScramble(text, isInView, delay = 0) {
 
     const timeout = setTimeout(() => {
       iterRef.current = 0;
-      const chars = getCharSet(text);
-      const totalFrames = text.length * 3;
+      const totalFrames = text.length * 5; // more frames = slower
 
       const animate = () => {
         const iter = iterRef.current;
-        const resolved = iter / 3;
+        const resolved = Math.floor(iter / 5);
 
-        const next = text
+        const chars = text
           .split("")
           .map((char, i) => {
             if (char === " " || char === "\n") return char;
             if (i < resolved) return text[i];
-            return chars[Math.floor(Math.random() * chars.length)];
+            return CHARS[Math.floor(Math.random() * CHARS.length)];
           })
           .join("");
 
-        setDisplayed(next);
+        setDisplayed({ chars, resolvedCount: resolved });
         iterRef.current += 1;
 
         if (iterRef.current <= totalFrames) {
-          frameRef.current = requestAnimationFrame(animate);
+          timerRef.current = setTimeout(animate, 40); // 40ms per frame ≈ 25fps, slow & readable
         } else {
-          setDisplayed(text);
+          setDisplayed({ chars: text, resolvedCount: text.length });
         }
       };
 
-      frameRef.current = requestAnimationFrame(animate);
+      timerRef.current = setTimeout(animate, 0);
     }, delay);
 
     return () => {
       clearTimeout(timeout);
-      if (frameRef.current) cancelAnimationFrame(frameRef.current);
+      clearTimeout(timerRef.current);
     };
   }, [isInView, text, delay]);
 
