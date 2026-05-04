@@ -37,12 +37,12 @@ export default function Home() {
         <>
           <StatusTickerBar />
           <div className="min-h-screen bg-background text-foreground font-sans pt-7">
-            <div className="fixed bottom-4 left-4 z-50">
+            <div className="fixed top-6 right-6 z-50">
               <button
                 onClick={handleSwitch}
                 className="font-mono text-xs px-3 py-1.5 border border-primary/20 text-primary/40 hover:text-primary hover:border-primary/60 transition-all tracking-widest bg-background"
               >
-                ⇄ SWITCH PROTOCOL
+                ↵ BACK TO HOME
               </button>
             </div>
             <HeroSection />
