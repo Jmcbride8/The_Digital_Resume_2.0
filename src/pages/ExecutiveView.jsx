@@ -127,15 +127,12 @@ export default function ExecutiveView({ onSwitch }) {
             </div>
             <span className="text-sm font-semibold tracking-wider text-neutral-800" style={{ fontFamily: "'Oswald', sans-serif" }}>JASON McBRIDE</span>
           </div>
-          <div className="flex items-center gap-6">
-            <a href="mailto:jasonmcbride.mba@gmail.com" className="text-xs tracking-widest uppercase text-neutral-400 hover:text-neutral-900 transition-colors hidden md:block">Contact</a>
-            <button
-              onClick={onSwitch}
-              className="text-xs tracking-widest uppercase border border-neutral-200 px-4 py-1.5 text-neutral-500 hover:text-neutral-900 hover:border-neutral-900 transition-all"
-            >
-              ⇄ Switch View
-            </button>
-          </div>
+          <button
+            onClick={onSwitch}
+            className="text-xs tracking-widest uppercase border border-neutral-200 px-4 py-1.5 text-neutral-500 hover:text-neutral-900 hover:border-neutral-900 transition-all"
+          >
+            ↵ Back to Home
+          </button>
         </div>
       </nav>
 
@@ -173,7 +170,7 @@ export default function ExecutiveView({ onSwitch }) {
             <div className="md:col-span-2 space-y-0 border border-neutral-100 divide-y divide-neutral-100">
               {[
                 [MapPin, "Location", "Goleta, CA"],
-                [Award, "MBA", "Univ. of Southern California"],
+                [Award, "MBA", "UCLA Anderson"],
                 [Phone, "Phone", "(408) 609-8558"],
                 [Zap, "Status", "Open to Opportunities"],
               ].map(([Icon, k, v]) => (

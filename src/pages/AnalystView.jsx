@@ -130,17 +130,12 @@ export default function AnalystView({ onSwitch }) {
         <span className="text-xs tracking-widest" style={{ color: "hsl(36,90%,45%)" }}>
           ◆ CIA // DIRECTORATE OF OPERATIONS // SECURE PORTAL
         </span>
-        <div className="flex items-center gap-4">
-          <span className="text-xs text-muted-foreground tracking-widest">
-            CASE: {CASE_FILE.id}
-          </span>
-          <button
-            onClick={onSwitch}
-            className="text-xs px-3 py-1 border border-primary/30 text-primary/60 hover:text-primary hover:border-primary transition-all tracking-widest"
-          >
-            ⇄ SWITCH PROTOCOL
-          </button>
-        </div>
+        <button
+          onClick={onSwitch}
+          className="text-xs px-3 py-1 border border-primary/30 text-primary/60 hover:text-primary hover:border-primary transition-all tracking-widest"
+        >
+          ↵ BACK TO HOME
+        </button>
       </div>
 
       <div className="max-w-4xl mx-auto px-6 pt-24 pb-20 space-y-16">

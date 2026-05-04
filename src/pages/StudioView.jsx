@@ -95,19 +95,11 @@ export default function StudioView({ onSwitch }) {
       style={{ fontFamily: "'Inter', system-ui, sans-serif", position: "relative", zIndex: 9998 }}>
 
       {/* ── FLOATING NAV ── */}
-      <nav className="fixed top-0 left-0 right-0 z-[9999] flex items-center justify-between px-8 py-6"
-        style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%)" }}>
-        <span className="text-sm font-light tracking-[0.3em] uppercase text-white/70">Jason McBride</span>
-        <div className="flex items-center gap-6">
-          <a href="mailto:jasonmcbride.mba@gmail.com"
-            className="text-xs tracking-[0.25em] uppercase text-white/50 hover:text-white transition-colors hidden md:block">
-            Contact
-          </a>
-          <button onClick={onSwitch}
-            className="text-xs tracking-[0.2em] uppercase px-4 py-2 border border-white/20 text-white/50 hover:border-white/60 hover:text-white transition-all">
-            ⇄ Switch
-          </button>
-        </div>
+      <nav className="fixed top-0 right-0 z-[9999] px-8 py-6">
+        <button onClick={onSwitch}
+          className="text-xs tracking-[0.2em] uppercase px-4 py-2 border border-white/20 text-white/50 hover:border-white/60 hover:text-white transition-all">
+          ↵ Back to Home
+        </button>
       </nav>
 
       {/* ── HERO — full bleed ── */}
@@ -317,8 +309,8 @@ export default function StudioView({ onSwitch }) {
       <div className="px-8 md:px-16 py-20 border-t border-white/10">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-px" style={{ background: "rgba(255,255,255,0.06)" }}>
           {[
-            { degree: "MBA", school: "University of Southern California", detail: "Marshall School of Business" },
-            { degree: "B.S. Business Administration", school: "California State University", detail: "Finance & Management" },
+            { degree: "MBA", school: "UCLA Anderson", detail: "University of California, Los Angeles" },
+            { degree: "B.S. Industrial & Systems Engineering", school: "Georgia Institute of Technology", detail: "Atlanta, GA" },
           ].map((e, i) => (
             <motion.div key={i}
               initial={{ opacity: 0 }}
